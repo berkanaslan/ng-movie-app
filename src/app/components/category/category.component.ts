@@ -20,7 +20,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllCategories().subscribe(categories => {
+    this.categoryService.getAllCategories().subscribe(categories => {
       this.categories = categories;
     });
   }
@@ -33,17 +33,6 @@ export class CategoryComponent implements OnInit {
       this.selectedCategory = null;
       this.displayAll = true;
     }
-  }
-
-  private getAllCategories(): Observable<Category[]> {
-    return this.categoryService.getAll().pipe(map(data => {
-      const categories: Category[] = [];
-
-      for (const key in data)
-        categories.push({...data[key], id: key});
-
-      return categories;
-    }));
   }
 
 }
