@@ -1,4 +1,10 @@
+<div class="list-group mb-2">
+  <a class="list-group-item list-group-item-action active" (click)="onCategorySelected()">Categories</a>
+</div>
+
 <div class="list-group">
-  <a class="list-group-item list-group-item-action">All Categories</a>
-  <a class="list-group-item list-group-item-action">Category 1</a>
+  <a class="list-group-item list-group-item-action"
+     [class.active]="!displayAll && selectedCategory.id == category.id"
+     (click)="onCategorySelected(category)"
+     *ngFor="let category of categories">{{category.name}}</a>
 </div>
