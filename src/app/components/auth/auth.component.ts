@@ -2,11 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthRequest} from "../../_model/user";
 import {AuthService} from "../../_service/auth.service";
+import {USER_STORAGE_KEY} from "../../core/constants/app.constants";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']})
+  styleUrls: ['./auth.component.scss']
+})
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
   actionText: string = "";
@@ -16,7 +19,8 @@ export class AuthComponent implements OnInit {
     passwordController: new FormControl("", [Validators.required])
   });
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,8 +44,9 @@ export class AuthComponent implements OnInit {
     });
 
     this.authService.tryAuth(authRequest, this.isLoginMode).subscribe(
-      response => {
-        console.log(response);
+      user => {
+        localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+        this.router.navigate(["/movies"]);
       });
   }
 }

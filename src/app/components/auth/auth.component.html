@@ -1,31 +1,38 @@
 <div class="container">
-  <form [formGroup]="formGroup">
-    <div class="mb-2">
-      <label class="form-label">E-Mail</label>
-      <input type="text" class="form-control" formControlName="emailController"/>
-    </div>
-    <div class="mb-2">
-      <label class="form-label">Password</label>
-      <input type="password" class="form-control" formControlName="passwordController"/>
-    </div>
-    <button type="submit" class="btn btn-primary mb-2" (click)="onSubmitButtonPressed()">{{actionText}}</button>
+  <div class="row align-items-center ">
+    <div class="col-md-12">
+      <form [formGroup]="formGroup">
 
-    <div>
-      <label class="label">
-        <div class="toggle">
-          <input class="toggle-state" type="checkbox" name="check"
-                 value="{{isLoginMode}}"
-                 (click)="onAuthModeChanged(!isLoginMode)"/>
-          <div class="toggle-inner">
-            <div class="indicator"></div>
-          </div>
-          <div class="active-bg"></div>
+        <div class="mb-2">
+          <label class="form-label">E-Mail</label>
+          <input type="text" class="form-control" formControlName="emailController"/>
         </div>
-        <div class="label-text">{{actionText}}</div>
-      </label>
-    </div>
 
-  </form>
+        <div class="mb-2">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="passwordController"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2" (click)="onSubmitButtonPressed()">{{actionText}}</button>
+
+        <div>
+          <label class="label">
+            <div class="toggle">
+              <input class="toggle-state" type="checkbox" name="check"
+                     value="{{isLoginMode}}"
+                     (click)="onAuthModeChanged(!isLoginMode)"/>
+              <div class="toggle-inner">
+                <div class="indicator"></div>
+              </div>
+              <div class="active-bg"></div>
+            </div>
+            <div class="label-text">{{actionText}}</div>
+          </label>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
 
 
