@@ -6,10 +6,11 @@ import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {CategoryComponent} from './components/category/category.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
-import {MoviesComponent} from './components/movies/movies.component';
+import {MoviesComponent} from './components/movies-home/movies/movies.component';
 import {AuthComponent} from './components/auth/auth.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./_service/auth.interceptor";
+import { MoviesHomeComponent } from './components/movies-home/movies-home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {AuthInterceptor} from "./_service/auth.interceptor";
     NavbarComponent,
     CategoryComponent,
     MoviesComponent,
-    AuthComponent
+    AuthComponent,
+    MoviesHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {FirebaseConstants} from "../core/constants/firebase.constants";
 import {tap} from "rxjs/operators";
+import {USER_STORAGE_KEY} from "../core/constants/app.constants";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,19 @@ export class AuthService extends EntityService<User> {
         ));
       }),
     );
+  }
+
+  getUserFromLocalStorage(): void {
+    const user: User = JSON.parse(localStorage.getItem(USER_STORAGE_KEY));
+
+    if (!user)
+      return;
+
+    this.user.next(user);
+  }
+
+  logout(): void {
+    localStorage.removeItem(USER_STORAGE_KEY);
+    this.user.next(null);
   }
 }
