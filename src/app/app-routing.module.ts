@@ -16,7 +16,8 @@ const routes: Routes = [
     children: [
       {path: "", component: MoviesComponent},
       {path: "add", component: AddMovieComponent},
-      {path: "category/add", component: AddCategoryComponent, canActivate: [AuthGuards]},
+      {path: "category/:categoryId", component: MoviesComponent},
+      {path: "category/add", component: AddCategoryComponent},
     ],
   },
 

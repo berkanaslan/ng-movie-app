@@ -16,8 +16,9 @@ export class CategoryService extends EntityService<Category> {
     return this.getAll().pipe(map(data => {
       const categories: Category[] = [];
 
-      for (const key in data)
+      for (const key in data) {
         categories.push({...data[key], id: key});
+      }
 
       return categories;
     }));

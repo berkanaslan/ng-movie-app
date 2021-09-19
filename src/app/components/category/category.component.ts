@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../_service/category.service";
 import {Category} from "../../_model/category";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-category',
@@ -14,7 +15,8 @@ export class CategoryComponent implements OnInit {
   selectedCategory: Category = null;
   displayAll: boolean = true;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,9 +29,11 @@ export class CategoryComponent implements OnInit {
     if (category != null) {
       this.selectedCategory = category;
       this.displayAll = false;
+      this.router.navigate(["/movies/category", category.id]);
     } else {
       this.selectedCategory = null;
       this.displayAll = true;
+      this.router.navigate(["/movies"]);
     }
   }
 
