@@ -7,6 +7,7 @@ import {map} from "rxjs/operators";
 
 @Injectable()
 export class CategoryService extends EntityService<Category> {
+
   constructor(protected http: HttpClient) {
     super(http, "/categories.json");
   }

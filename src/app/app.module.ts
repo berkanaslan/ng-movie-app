@@ -11,6 +11,9 @@ import {AuthComponent} from './components/auth/auth.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./_service/auth.interceptor";
 import { MoviesHomeComponent } from './components/movies-home/movies-home.component';
+import { AddMovieComponent } from './components/movies-home/add-movie/add-movie.component';
+import { AddCategoryComponent } from './components/category/add-category/add-category.component';
+import {ResponseInterceptor} from "./_service/response-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { MoviesHomeComponent } from './components/movies-home/movies-home.compon
     CategoryComponent,
     MoviesComponent,
     AuthComponent,
-    MoviesHomeComponent
+    MoviesHomeComponent,
+    AddMovieComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { MoviesHomeComponent } from './components/movies-home/movies-home.compon
     ReactiveFormsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
