@@ -2,8 +2,8 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/">Movie App</a>
     <ul class="navbar-nav me-auto">
-      <li class="nav-link" *ngIf="isLogged">Add Category</li>
-      <li class="nav-link" *ngIf="isLogged">Add Movie</li>
+      <li class="nav-link" routerLink="/movies/category/add" *ngIf="isLogged">Add Category</li>
+      <li class="nav-link" routerLink="/movies/add" *ngIf="isLogged">Add Movie</li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-link" routerLink="/auth" *ngIf="!isLogged">Login</li>
