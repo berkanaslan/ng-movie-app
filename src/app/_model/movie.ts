@@ -4,5 +4,5 @@ export interface Movie {
   description: string;
   imageURL: string;
   isPopular: boolean;
-  categoryId: number;
+  categoryId: string;
 }
